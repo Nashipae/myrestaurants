@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/chatEditText"
         android:layout_width="282dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
