@@ -21,10 +21,8 @@
         android:id="@+id/editText6"
         android:layout_width="match_parent"
         android:layout_height="533dp"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
         android:ems="10"
@@ -35,13 +33,13 @@
 
     <Button
         android:id="@+id/sendButton"
-        android:layout_width="113dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/sendButton1"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="298dp"
         android:layout_marginBottom="11dp"
         android:backgroundTint="#00693636"
+        android:background="@color/colorAccent"
         android:drawableBottom="@color/colorPrimary"
         android:text="Send" />
 </RelativeLayout>

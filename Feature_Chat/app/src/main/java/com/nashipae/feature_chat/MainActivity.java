@@ -16,10 +16,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mSendButton1 = (Button) findViewById(R.id.sendButton1);
+        mSendButton1 = (Button) findViewById(R.id.sendButton);
         mSendButton1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Message Sent", Toast.LENGTH_LONG).show();
             }
         });
