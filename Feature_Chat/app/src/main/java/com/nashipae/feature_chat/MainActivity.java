@@ -9,15 +9,15 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button mSendButton1;
+    private Button mSendButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mSendButton1 = (Button) findViewById(R.id.sendButton);
-        mSendButton1.setOnClickListener(new View.OnClickListener() {
+        mSendButton = (Button) findViewById(R.id.sendButton);
+        mSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Message Sent", Toast.LENGTH_LONG).show();
