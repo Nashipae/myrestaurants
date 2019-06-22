@@ -38,9 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/ostrich-regular.ttf");
         mAppNameTextView.setTypeface(ostrichFont);
-        mFindRestaurantsButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
+
+//        mFindRestaurantsButton.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
 //                Toast.makeText(MainActivity.this, "Hello World!", Toast.LENGTH_LONG).show();
 //                Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
 //                startActivity(intent);
@@ -51,11 +52,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
 //                intent.putExtra("location", location);
 //                startActivity(intent);
-                }
+//                }
+//
+//
+//
+//        });
 
-
-
-        });
+        mFindRestaurantsButton.setOnClickListener(this);
 
     }
 
