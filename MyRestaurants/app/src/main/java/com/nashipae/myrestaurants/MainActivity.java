@@ -14,7 +14,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = MainActivity.class.getSimpleName();
 //    private Button mFindRestaurantsButton;
 //    private EditText mLocationEditText;
@@ -44,19 +44,29 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(MainActivity.this, "Hello World!", Toast.LENGTH_LONG).show();
 //                Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
 //                startActivity(intent);
-                String location = mLocationEditText.getText().toString();
-                Log.d(TAG, location);
-                Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
-                intent.putExtra("location", location);
-                startActivity(intent);
+
+//                TO BE IMPLEMENTED UNDER ONCLICK INTERFACE
+//                String location = mLocationEditText.getText().toString();
+//                Log.d(TAG, location);
+//                Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
+//                intent.putExtra("location", location);
+//                startActivity(intent);
                 }
 
 
 
         });
 
-
-
-
     }
+
+    @Override
+    public void onClick(View v) {
+        if(v == mFindRestaurantsButton) {
+            String location = mLocationEditText.getText().toString();
+            Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
+            intent.putExtra("location", location);
+            startActivity(intent);
+        }
+    }
+
 }
