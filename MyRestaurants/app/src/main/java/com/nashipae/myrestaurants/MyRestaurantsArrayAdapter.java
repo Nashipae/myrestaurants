@@ -1,7 +1,9 @@
+package com.nashipae.myrestaurants;
+
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
-public class MyRestaurantsArrayAdapter extends ArrayAdapter {
+public class MyRestaurantsArrayAdapter extends ArrayAdapter{
     private Context mContext;
     private String[] mRestaurants;
     private String[] mCuisines;

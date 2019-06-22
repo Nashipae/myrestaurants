@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+//import android.widget.ListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,9 +41,16 @@ public class RestaurantsActivity extends AppCompatActivity {
 //        mListView = (ListView) findViewById(R.id.listView);
 //        mLocationTextView = (TextView) findViewById(R.id.locationTextView);
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants);
-        mListView.setAdapter(adapter);
+//        REPLACED BY ARRAYADAPTER CLASS
+//        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants);
+//        mListView.setAdapter(adapter);
 
+        Intent intent = getIntent();
+        String location = intent.getStringExtra("location");
+//        IMPLEMENTED ARRAYADAPTER
+        MyRestaurantsArrayAdapter adapter = new MyRestaurantsArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants, cuisines);
+        mListView.setAdapter(adapter);
+//        Log.d("RestaurantsActivity", "In the onCreate method!");
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -53,10 +61,8 @@ public class RestaurantsActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = getIntent();
-        String location = intent.getStringExtra("location");
+
         mLocationTextView.setText("Here are all the restaurants near: " + location);
-//        Log.d("RestaurantsActivity", "In the onCreate method!");
 
 
     }
