@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/ostrich-regular.ttf");
         mAppNameTextView.setTypeface(ostrichFont);
 
+//        REPLACED BY SETTER METHOD FOR ONCLICKLISTENER.
 //        mFindRestaurantsButton.setOnClickListener(new View.OnClickListener(){
 //            @Override
 //            public void onClick(View v){
