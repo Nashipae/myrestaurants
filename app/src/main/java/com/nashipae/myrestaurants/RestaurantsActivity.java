@@ -11,10 +11,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+//import javax.security.auth.callback.Callback;
 
 public class RestaurantsActivity extends AppCompatActivity {
+    private static final String TAG = RestaurantsActivity.class.getSimpleName();
+
     @BindView(R.id.locationTextView) TextView mLocationTextView;
     @BindView(R.id.listView) ListView mListView;
     private String[] restaurants = new String[] {"Mi Mero Mole", "Mother's Bistro",
@@ -25,31 +34,55 @@ public class RestaurantsActivity extends AppCompatActivity {
 
     private String[] cuisines = new String[] {"Vegan Food", "Breakfast", "Fishs Dishs", "Scandinavian", "Coffee", "English Food", "Burgers", "Fast Food", "Noodle Soups", "Mexican", "BBQ", "Cuban", "Bar Food", "Sports Bar", "Breakfast", "Mexican" };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
         ButterKnife.bind(this);
 
-        MyRestaurantsArrayAdapter adapter = new MyRestaurantsArrayAdapter(this, android.R.layout.simple_list_item_1,restaurants, cuisines);
+        MyRestaurantsArrayAdapter adapter = new MyRestaurantsArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants, cuisines);
 
 //        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants);
         mListView.setAdapter(adapter);
 
-                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        String restaurant = ((TextView) view).getText().toString();
-                        Toast.makeText(RestaurantsActivity.this, restaurant, Toast.LENGTH_LONG).show();
-                        Log.v("RestaurantsActivity", "In the onItemClickListener!");
-                    }
-                });
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String restaurant = ((TextView) view).getText().toString();
+                Toast.makeText(RestaurantsActivity.this, restaurant, Toast.LENGTH_LONG).show();
+                Log.v("RestaurantsActivity", "In the onItemClickListener!");
+            }
+        });
+
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
         mLocationTextView.setText("Here are all the restaurants near: " + location);
+        getRestaurants(location);
         Log.d("RestaurantsActivity", "In the onCreate method!");
 
 
+    }
+
+    private void getRestaurants(String location) {
+        final YelpService yelpService = new YelpService();
+        yelpService.findRestaurants(location, new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e){
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    String jsonData = response.body().string();
+                    Log.v(TAG, jsonData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
