@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -89,10 +90,17 @@ public class RestaurantsActivity extends AppCompatActivity {
                     RestaurantsActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            String[] restaurantNames = new String[restaurants.size()];
+                            for (int i = 0; i < restaurantNames.length; i++) {
+                                restaurantNames[i] = restaurants.get(i).getName();
+                            }
+
+                            ArrayAdapter adapter = new ArrayAdapter(RestaurantsActivity.this,android.R.layout.simple_list_item_1,restaurantNames);
+                            mListView.setAdapter(adapter);
 
                         }
                     });
-                    
+
                  }
         });
     }
