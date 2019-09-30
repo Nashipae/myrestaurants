@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,11 +27,17 @@ public class RestaurantsActivity extends AppCompatActivity {
 
     @BindView(R.id.locationTextView) TextView mLocationTextView;
     @BindView(R.id.listView) ListView mListView;
-    private String[] restaurants = new String[] {"Mi Mero Mole", "Mother's Bistro",
-            "Life of Pie", "Screen Door", "Luc Lac", "Sweet Basil",
-            "Slappy Cakes", "Equinox", "Miss Delta's", "Andina",
-            "Lardo", "Portland City Grill", "Fat Head's Brewery",
-            "Chipotle", "Subway"};
+
+    //replaced by Yelp
+//    private String[] restaurants = new String[] {"Mi Mero Mole", "Mother's Bistro",
+//            "Life of Pie", "Screen Door", "Luc Lac", "Sweet Basil",
+//            "Slappy Cakes", "Equinox", "Miss Delta's", "Andina",
+//            "Lardo", "Portland City Grill", "Fat Head's Brewery",
+//            "Chipotle", "Subway"};
+
+    //replacing the restaurants String above
+
+    public ArrayList<Restaurant> restaurants = new ArrayList<>();
 
     private String[] cuisines = new String[] {"Vegan Food", "Breakfast", "Fishs Dishs", "Scandinavian", "Coffee", "English Food", "Burgers", "Fast Food", "Noodle Soups", "Mexican", "BBQ", "Cuban", "Bar Food", "Sports Bar", "Breakfast", "Mexican" };
 
@@ -41,10 +48,10 @@ public class RestaurantsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_restaurants);
         ButterKnife.bind(this);
 
-        MyRestaurantsArrayAdapter adapter = new MyRestaurantsArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants, cuisines);
+//        MyRestaurantsArrayAdapter adapter = new MyRestaurantsArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants, cuisines);
 
 //        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants);
-        mListView.setAdapter(adapter);
+//        mListView.setAdapter(adapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -76,13 +83,17 @@ public class RestaurantsActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+
+                    restaurants = yelpService.processResults(response);
+
+                    RestaurantsActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    
+                 }
         });
     }
 }
