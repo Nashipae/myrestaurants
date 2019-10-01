@@ -3,6 +3,8 @@ package com.nashipae.myrestaurants;
 import androidx.test.rule;
 import android.view.View;
 
+import com.nashipae.myrestaurants.ui.RestaurantsActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 

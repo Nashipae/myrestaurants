@@ -1,6 +1,9 @@
-package com.nashipae.myrestaurants;
+package com.nashipae.myrestaurants.services;
 
 //import javax.security.auth.callback.Callback;
+
+import com.nashipae.myrestaurants.Constants;
+import com.nashipae.myrestaurants.models.Restaurant;
 
 import org.json.JSONArray;
 import org.json.JSONException;

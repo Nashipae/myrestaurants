@@ -1,4 +1,4 @@
-package com.nashipae.myrestaurants;
+package com.nashipae.myrestaurants.models;
 
 import java.util.ArrayList;
 

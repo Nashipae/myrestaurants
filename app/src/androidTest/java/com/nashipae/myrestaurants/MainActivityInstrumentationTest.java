@@ -1,6 +1,8 @@
 package com.nashipae.myrestaurants;
 
 
+import com.nashipae.myrestaurants.ui.MainActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 

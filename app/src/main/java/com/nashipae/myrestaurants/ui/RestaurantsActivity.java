@@ -1,4 +1,4 @@
-package com.nashipae.myrestaurants;
+package com.nashipae.myrestaurants.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.nashipae.myrestaurants.R;
+import com.nashipae.myrestaurants.models.Restaurant;
+import com.nashipae.myrestaurants.services.YelpService;
 
 import java.io.IOException;
 import java.util.ArrayList;

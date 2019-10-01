@@ -1,4 +1,4 @@
-package com.nashipae.myrestaurants;
+package com.nashipae.myrestaurants.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.nashipae.myrestaurants.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
