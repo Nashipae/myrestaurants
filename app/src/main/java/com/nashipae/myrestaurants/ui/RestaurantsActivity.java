@@ -68,7 +68,7 @@ public class RestaurantsActivity extends AppCompatActivity {
                                     new LinearLayoutManager(RestaurantsActivity.this);
                             mRecyclerView.setLayoutManager(layoutManager);
                             mRecyclerView.setHasFixedSize(true);
-                        
+
                         }
                         });
                     }
